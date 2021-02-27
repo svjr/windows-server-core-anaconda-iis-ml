@@ -15,7 +15,7 @@ FROM mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2019
 # Adiciona o Label a nova imagem                                                    	 
 #									                                     
 ############################################################################################
-LABEL key="svj-windows-server-core-anaconda-iis-ml"
+LABEL key="windows-server-core-anaconda-iis-ml"
 ############################################################################################
 #														       
 # Cria os diretórios                                    			 
