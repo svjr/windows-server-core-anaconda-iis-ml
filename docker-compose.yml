@@ -5,7 +5,7 @@ services:
         build:
             dockerfile: docker/windows-server-core-anaconda-iis-ml.dockerfile
             context: ./
-        image: windows-server-core-anaconda-iis-ml
+        image: sergiovallejr/windows-server-core-anaconda-iis-ml:1.0
         ports:
             - "0.0.0.0:8000:80"
         networks:
