@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+    windows-server-core-anaconda-iis-ml:
+        container_name: windows-server-core-anaconda-iis-ml
+        build:
+            dockerfile: docker/windows-server-core-anaconda-iis-ml.dockerfile
+            context: ./
+        image: windows-server-core-anaconda-iis-ml
+        ports:
+            - "0.0.0.0:8000:80"
+        networks:
+            - windows-server-core-anaconda
+networks:
+    windows-server-core-anaconda:
+        name: windows-server-core-anaconda
+        driver: nat
