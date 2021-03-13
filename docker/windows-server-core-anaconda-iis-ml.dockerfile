@@ -85,8 +85,10 @@ RUN powershell -Command \
     New-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Command Processor' -Name 'AutoRun'  -value 'C:\anaconda\Scripts\activate.bat C:\anaconda' -Type ExpandString ; \
     Enable-WindowsOptionalFeature -Online -FeatureName IIS-CGI ; \
     Import-Module WebAdministration; Set-ItemProperty IIS:\AppPools\DefaultAppPool -name processModel -value @{identitytype=0} ; \
-    Import-Module WebAdministration; Get-ItemProperty IIS:\AppPools\DefaultAppPool -name processModel ;\
-    Get-WebHandler -PsPath 'IIS:\Sites\Default Web Site';
+    Import-Module WebAdministration; Get-ItemProperty IIS:\AppPools\DefaultAppPool -name processModel ; \
+    Get-WebHandler -PsPath 'IIS:\Sites\Default Web Site'; \
+    New-LocalUser -Name 'User03' -Description 'Usuario IIS para execução de aplicações' -Password (ConvertTo-SecureString -AsPlainText '123XYab' -Force) ; \
+    Add-LocalGroupMember -Group 'IIS_IUSRS' -Member 'User03';
 ############################################################################################
 #																						   
 # Configura o FASTCGI               				                                       
