@@ -89,6 +89,17 @@ RUN powershell -Command \
     Get-WebHandler -PsPath 'IIS:\Sites\Default Web Site'; \
     New-LocalUser -Name 'User03' -Description 'Usuario IIS para execução de aplicações' -Password (ConvertTo-SecureString -AsPlainText '123XYab' -Force) ; \
     Add-LocalGroupMember -Group 'IIS_IUSRS' -Member 'User03';
+RUN powershell -Command \
+    Install-WindowsFeature Web-Mgmt-Service; \
+    New-ItemProperty -Path HKLM:\software\microsoft\WebManagement\Server -Name EnableRemoteManagement -Value 1 -Force; \
+    Set-Service -Name wmsvc -StartupType automatic;
+############################################################################################# 
+#
+# Add user for Remote IIS Manager Login
+#
+############################################################################################
+RUN net user iisadmin 'Password~1234' /ADD /Y
+RUN net localgroup administrators iisadmin /add
 ############################################################################################
 #																						   
 # Configura o FASTCGI               				                                       
