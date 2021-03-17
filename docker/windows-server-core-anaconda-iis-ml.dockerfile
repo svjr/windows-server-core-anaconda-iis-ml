@@ -92,7 +92,8 @@ RUN powershell -Command \
 RUN powershell -Command \
     Install-WindowsFeature Web-Mgmt-Service; \
     New-ItemProperty -Path HKLM:\software\microsoft\WebManagement\Server -Name EnableRemoteManagement -Value 1 -Force; \
-    Set-Service -Name wmsvc -StartupType automatic;
+    Set-Service -Name wmsvc -StartupType automatic; \
+    Enable-WindowsOptionalFeature -Online -FeatureName IIS-ApplicationInit
 ############################################################################################# 
 #
 # Add user for Remote IIS Manager Login
