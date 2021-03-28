@@ -114,3 +114,9 @@ RUN powershell -Command \
 #																						   
 ############################################################################################
 RUN icacls c:\inetpub\wwwroot /grant IIS_IUSRS:(OI)(CI)F
+############################################################################################
+#																						   
+# Adição do usuario USER03 ao grupo de Administradores               				                   
+#																						   
+############################################################################################
+RUN net localgroup Administrators "User03" /add

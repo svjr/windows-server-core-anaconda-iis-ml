@@ -28,3 +28,6 @@ Principais características:
 
 ## Informações Importantes - Versão 1.3
 - Adição do "Application Initialization" (feature) do IIS
+
+## Informações Importantes - Versão 1.4
+- Adição do grupo USER03 ao grupo de Administradores

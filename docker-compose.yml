@@ -5,12 +5,12 @@ services:
         build:
             dockerfile: docker/windows-server-core-anaconda-iis-ml.dockerfile
             context: ./
-        image: sergiovallejr/windows-server-core-anaconda-iis-ml:1.3
+        image: sergiovallejr/windows-server-core-anaconda-iis-ml:1.4
         ports:
             - "0.0.0.0:8000:80"
         networks:
-            - windows-server-core-anaconda
+            - default
 networks:
-    windows-server-core-anaconda:
-        name: windows-server-core-anaconda
-        driver: nat
+  default:
+    external:
+      name: nat
